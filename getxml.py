@@ -14,11 +14,14 @@ def input(chemin):
 
 	return soup
 
-toto = "../projets_zhu_2017/projet_canard2/rsc/canard_lichao_corpus_corrige_GL.xml"
-soup = input(toto)
+print("USAGE : python getxml.py data_figement chemin_corpus")
+if len(sys.argv)!=3:
+	print("Missing arguments, exiting\n")
+	exit()
+soup = input(sys.argv[1])
 
 sequence = soup.find_all(u"séquence_figée")
-chemin_corpus = sys.argv[1]
+chemin_corpus = sys.argv[2]
 
 w = codecs.open("output.txt", "w", "utf-8")
 for exp in sequence :
