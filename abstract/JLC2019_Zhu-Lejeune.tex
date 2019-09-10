@@ -1,0 +1,106 @@
+\documentclass[french,a4paper,11pt]{report}
+\usepackage{lipsum}
+\usepackage[a4paper]{geometry}
+\usepackage{ucs} 
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} 
+\usepackage[T2A,T1]{fontenc}
+\usepackage{times}
+\usepackage[english,russian,frenchb]{babel}
+\frenchbsetup{StandardLists=true}
+\usepackage{gb4e}
+\usepackage{tipa}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{qtree}
+\usepackage{makeidx}
+%Index sur une seule colonne
+\usepackage[columns=1]{idxlayout}
+\usepackage[linktocpage=true]{hyperref}
+%Ajout Emilie
+\usepackage{array}
+\usepackage{tabularx}
+% ajout Solange
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{placeins}
+%ajout pour tableau 
+\usepackage{array,multirow,makecell}
+\setcellgapes{1pt}
+\makegapedcells
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash }b{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash }b{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+
+
+
+% Permet d'utiliser l'option H pour le placement des figures, qui force plus que juste h
+\usepackage{float}
+
+\geometry{hmargin=2cm,vmargin=2cm}
+
+\hypersetup{colorlinks,
+citecolor=black,
+filecolor=black,
+linkcolor=black,
+urlcolor=black,
+}
+
+\let\oldtabular=\tabular
+\def\tabular{\small\oldtabular}
+
+\makeindex
+
+%%%%Commande pour les index ATTENTION il faut bien mettre un " devant le @ des mails !
+%%%% #1=nom #2=prenom #3=mail avec " devant le @...
+\newcommand{\indexer}[3]{#2 #1 \index{#1 #2 (#3)} 
+}
+
+
+%%%%% Reset compteurs tables, figures, exemples et notes de bas de page%%%%
+%%% Commande utilisateur qui inclut le fichier et met à 0 les compteurs des notes, tables, exemples et figures pour chaque article %%%
+\newcommand{\includesec}[1]{
+	\setcounter{footnote}{0}
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+	\setcounter{exx}{0}
+	\include{#1}
+}
+
+%%%%Redéfinition de la commande subvention pour mettre les refs en plus petit %%%%
+\renewcommand{\small}{
+	\footnotesize	
+}
+
+\newcommand{\lettre}[1]{
+	\huge{#1}
+	\textnormal
+}
+
+\begin{document}
+
+\include{resume}
+
+%% même police pour les URL que pour le reste du texte
+\urlstyle{same}
+
+
+%Informations de contact
+%Page blanche style empty si elle existe
+	\clearpage{\pagestyle{empty}\cleardoublepage}
+	%Titre du chapitre #1=thématique, #2=date
+%	\chapter*{ \centering Informations sur les auteurs}
+%	%Style vide pour la page qui contient le titre du chapitre
+%	\thispagestyle{empty}
+	%Ajout du chapitre dans la tdm
+	\addcontentsline{toc}{part}{Informations sur les auteurs}
+
+\printindex
+	
+\end{document}

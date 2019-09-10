@@ -1,2 +1,7 @@
 JSON*
 data_*
+*.aux
+*.log
+*.swp
+*.idx
+*.out
